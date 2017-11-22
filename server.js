@@ -26,7 +26,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.use((request, response, next)=>{
     var now = new Date().toString();
-    console.log(`${now}`)
+    console.log(`${now}: Access to ${request.url}`)
     next();
 });
 
@@ -42,8 +42,15 @@ app.get('/', (request, response)=>{
 
 app.get('/about', (request, response) => {
     response.render('about.hbs', {
-        pageTitle: 'About page 125',
+        pageTitle: 'About page',
     });
+})
+
+
+app.get('/projects', (request, response) => {
+    response.render('projects.hbs',{
+        pageTitle: "Projects page"
+    })
 })
 
 app.get('/bad', (request, response) => {
